@@ -1,0 +1,132 @@
+:root {
+  --bg: #ffffff;
+  --text: #222831;
+  --muted: #6b7280;
+  --link: #1a6fd1;
+  --link-hover: #e8871e;
+  --rule: #e5e7eb;
+  --bar-bg: #ffffff;
+  --footer-bg: #f6f7f8;
+  --thumb-bg: #f3f4f6;
+  --tag-bg: #fff4e5;
+  --tag-text: #9a5b00;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181c;
+    --text: #e6e6e6;
+    --muted: #9aa0a6;
+    --link: #6fb1ff;
+    --link-hover: #f5a54a;
+    --rule: #2c2f35;
+    --bar-bg: #16181c;
+    --footer-bg: #1c1f24;
+    --thumb-bg: #ffffff;
+    --tag-bg: #3a2c14;
+    --tag-text: #f5c27a;
+  }
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  display: flex; flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 17.5px;
+  line-height: 1.65;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+p { margin: 0 0 16px; }
+
+/* Top bar */
+.topbar {
+  background: var(--bar-bg);
+  border-bottom: 1px solid var(--rule);
+}
+.topbar .inner {
+  max-width: 1100px; margin: 0 auto; padding: 18px 24px;
+  display: flex; align-items: baseline; gap: 40px;
+}
+.topbar .brand { font-weight: 700; color: var(--text); font-size: 1.05rem; }
+.topbar .brand:hover { text-decoration: none; }
+.topbar nav { display: flex; gap: 28px; }
+.topbar nav a { color: var(--muted); }
+.topbar nav a.active { color: var(--text); }
+
+/* Page layout */
+.page {
+  flex: 1;
+  width: 100%; max-width: 1100px; margin: 0 auto; padding: 40px 24px 64px;
+  display: flex; gap: 64px;
+}
+.sidebar { width: 210px; flex-shrink: 0; font-size: 0.85rem; }
+.sidebar .photo {
+  width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+  border: 3px solid var(--rule);
+}
+.sidebar .name { font-size: 1.1rem; font-weight: 700; margin: 14px 0 2px; }
+.sidebar .role { color: var(--muted); margin-bottom: 18px; }
+.sidebar ul { list-style: none; margin: 0; padding: 0; }
+.sidebar li { margin: 7px 0; display: flex; align-items: center; gap: 10px; }
+.sidebar li i { width: 16px; text-align: center; color: var(--muted); }
+.sidebar li a { color: var(--text); }
+.sidebar li a:hover { color: var(--link-hover); }
+
+.content { flex: 1; min-width: 0; max-width: 700px; }
+h1 { font-size: 2.3rem; font-weight: 600; margin: 0 0 14px; line-height: 1.2; }
+h2 {
+  font-size: 1.8rem; font-weight: 600; margin: 44px 0 16px; line-height: 1.2;
+  padding-bottom: 10px; border-bottom: 1px solid var(--rule);
+}
+
+/* Updates */
+.updates { list-style: none; margin: 0; padding: 0; }
+.updates li { display: flex; gap: 20px; padding: 7px 0; }
+.updates .date { color: var(--link); width: 95px; flex-shrink: 0; }
+
+/* Research */
+.project { display: flex; gap: 28px; align-items: flex-start; }
+.project + .project { margin-top: 40px; }
+.thumb {
+  width: 230px; flex-shrink: 0;
+  background: var(--thumb-bg); border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.thumb img { width: 100%; display: block; }
+.project .title { font-weight: 700; }
+.project .meta { color: var(--muted); font-size: 0.95rem; }
+.project .venue { font-style: italic; }
+.project p { margin-top: 8px; }
+.tag {
+  display: inline-block; font-size: 0.75rem; font-weight: 600;
+  padding: 1px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 2px;
+  background: var(--tag-bg); color: var(--tag-text);
+}
+
+/* Footer */
+footer { background: var(--footer-bg); border-top: 1px solid var(--rule); }
+footer .inner {
+  max-width: 1100px; margin: 0 auto; padding: 20px 24px;
+  color: var(--muted); font-size: 0.8rem;
+}
+
+@media (max-width: 760px) {
+  body { font-size: 16.5px; }
+  .topbar .inner { padding: 14px 16px; gap: 24px; }
+  .page { flex-direction: column; gap: 28px; padding: 28px 16px 48px; }
+  .sidebar { width: 100%; display: grid; grid-template-columns: 110px 1fr; column-gap: 20px; align-items: center; }
+  .sidebar .photo { width: 110px; height: 110px; grid-row: span 2; }
+  .sidebar .name { margin-top: 0; }
+  .sidebar ul { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 14px; }
+  .sidebar li { margin: 0; }
+  h1 { font-size: 1.9rem; }
+  h2 { font-size: 1.5rem; }
+  .updates li { gap: 12px; }
+  .updates .date { width: 82px; }
+  .project { flex-direction: column; gap: 14px; }
+  .thumb { width: 100%; }
+  footer .inner { padding: 16px; }
+}
